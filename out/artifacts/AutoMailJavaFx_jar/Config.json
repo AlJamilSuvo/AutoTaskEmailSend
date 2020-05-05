@@ -1,0 +1,9 @@
+{
+    "senderEmail": "youremail@revesoft.com",
+    "senderName": "Your name",
+    "password": "your password",
+    "sendingTimeHour": 18,
+    "sendingTimeMin": 0,
+    "receiverEmail": "aljamilsuvo@gmail.com",
+    "ccEmail": "aljamilsuvo@gmail.com"
+}

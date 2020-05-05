@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="al.jamil.suvo.autoemail.controller.AutoEmailController">
+    <children>
+        <Separator layoutX="497.0" layoutY="1.0" orientation="VERTICAL" prefHeight="629.0" prefWidth="11.0" />
+        <WebView fx:id="emailView" layoutX="515.0" layoutY="148.0" prefHeight="400.0" prefWidth="626.0" />
+      <TableView fx:id="taskTable" layoutX="14.0" layoutY="144.0" prefHeight="482.0" prefWidth="480.0" />
+      <Separator layoutX="870.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="147.0" prefWidth="11.0" />
+      <GridPane hgap="10.0" layoutX="14.0" layoutY="21.0" prefHeight="115.0" prefWidth="470.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.20001220703125" minWidth="10.0" prefWidth="106.00001831054688" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="419.79998779296875" minWidth="10.0" prefWidth="353.99998168945314" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Label text="Project" />
+              <TextField fx:id="tfProject" prefHeight="26.0" prefWidth="386.0" GridPane.columnIndex="1" />
+              <Label text="Task" GridPane.rowIndex="1" />
+              <TextField fx:id="tfTask" prefHeight="26.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              <Button fx:id="addTaskBtn" mnemonicParsing="false" onAction="#addTask" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #0000FF;" text="Add Task" textFill="WHITE" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="cancelEditingBt" cancelButton="true" mnemonicParsing="false" onAction="#cancelEditing" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #ff0000;" text="Cancel Editing" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+         </children>
+      </GridPane>
+      <GridPane hgap="10.0" layoutX="515.0" layoutY="10.0" prefHeight="106.0" prefWidth="354.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.20001220703125" minWidth="10.0" prefWidth="69.6000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.20001220703125" minWidth="10.0" prefWidth="285.5999755859375" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Label text="To Email" />
+              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cc Email" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subject" GridPane.rowIndex="2" />
+              <TextField fx:id="toEmail" prefHeight="26.0" prefWidth="290.0" GridPane.columnIndex="1" />
+              <TextField fx:id="ccEmail" prefHeight="26.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfSubject" prefHeight="16.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <GridPane hgap="10.0" layoutX="887.0" layoutY="17.0" prefHeight="91.0" prefWidth="262.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.39989013671874" minWidth="10.0" prefWidth="219.99986572265624" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="autoSendTime" strokeType="OUTSIDE" strokeWidth="0.0" text="time">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button fx:id="autoSendCancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancelAutoSent" prefHeight="21.0" prefWidth="178.0" style="-fx-background-color: #ff0000;" text="Cancel Auto Send" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <CheckBox mnemonicParsing="false" text="Exit After Email Send" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="515.0" layoutY="556.0" prefHeight="66.0" prefWidth="626.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.400048828125" minWidth="10.0" prefWidth="396.2000244140625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.0" minWidth="10.0" prefWidth="72.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.199951171875" minWidth="10.0" prefWidth="123.59995117187503" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" style="-fx-background-color: #0000FF;" text="Send Email Now" textFill="WHITE" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="emailSendInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="Send Email" />
+            <ImageView fx:id="sendingImage" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+    </children>
+   <effect>
+      <Reflection />
+   </effect>
+</AnchorPane>

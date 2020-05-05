@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: al.jamil.suvo.autoemail.fx.AutoEmailSender
+
