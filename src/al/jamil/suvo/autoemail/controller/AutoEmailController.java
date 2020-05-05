@@ -282,6 +282,14 @@ public class AutoEmailController {
         html += "<br>";
         html += "---<br>";
         html += ConfigProvider.get().config.getSenderName();
+        if (ConfigProvider.get().config.getSenderEmail().equals("jamil.suvo@revesoft.com")) {
+            html += "<br><br><br><br>";
+            html += "<p style=\"font-size=8px;\">This email is auto generated and auto sent. This automation is done by " +
+                    "this project. Github : <a href=\"https://github.com/AlJamilSuvo/AutoTaskEmailSend\">" +
+                    "https://github.com/AlJamilSuvo/AutoTaskEmailSend</a></p>";
+
+
+        }
         html += "</body></html>";
         System.out.println(html);
         return html;
