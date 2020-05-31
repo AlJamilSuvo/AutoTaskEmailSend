@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="al.jamil.suvo.autoemail.controller.AutoEmailController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Settings">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Change Profile" />
+                  <CheckMenuItem mnemonicParsing="false" text="Exit After Email Send" />
+               </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="695.0" prefWidth="1280.0">
+            <children>
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="575.0" minWidth="420.0" prefHeight="575.0" prefWidth="545.0">
+                    <children>
+                        <Label text="Project" />
+                        <TextField fx:id="tfProject">
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Task" />
+                        <TextField fx:id="tfTask">
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <HBox>
+                            <children>
+                                <Button fx:id="addTaskBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addTask" text="Add New Task">
+                                    <graphic>
+                                        <ImageView fx:id="ivAddTask" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                    </graphic>
+                                    <HBox.margin>
+                                        <Insets bottom="30.0" right="150.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Label fx:id="cancelEditingBt" minHeight="32.0" prefHeight="32.0" text="Cancel Editing" textFill="RED" />
+                            </children>
+                            <opaqueInsets>
+                                <Insets bottom="20.0" />
+                            </opaqueInsets>
+                        </HBox>
+                        <TableView fx:id="taskTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="485.0" prefWidth="526.0">
+                            <opaqueInsets>
+                                <Insets top="20.0" />
+                            </opaqueInsets>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+                <Separator orientation="VERTICAL" />
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="575.0" prefWidth="723.0">
+                    <children>
+                        <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <VBox minWidth="300.0" prefWidth="100.0">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Label text="To Email" />
+                                        <TextField fx:id="toEmail">
+                                            <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                            </VBox.margin>
+                                        </TextField>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cc Email" />
+                                        <TextField fx:id="ccEmail" />
+                                    </children>
+                                </VBox>
+                                <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                <VBox minWidth="200.0" prefHeight="200.0" prefWidth="100.0">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Send Time" />
+                                        <HBox prefWidth="200.0">
+                                            <children>
+                                                <Text fx:id="autoSendTime" strokeType="OUTSIDE" strokeWidth="0.0" text="5:30 AM">
+                                                    <HBox.margin>
+                                                        <Insets bottom="40.0" right="20.0" />
+                                                    </HBox.margin>
+                                                </Text>
+                                                <Text fx:id="autoSendCancelBtn" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel Auto Send" />
+                                            </children>
+                                        </HBox>
+                                        <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" text="Send Email Now">
+                                            <graphic>
+                                                <ImageView fx:id="ivSendBnt" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                                <ImageView fx:id="sendingImage" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <VBox minHeight="420.0" prefHeight="550.0" prefWidth="703.0">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </VBox.margin>
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subject" />
+                                <TextField fx:id="tfSubject">
+                                    <opaqueInsets>
+                                        <Insets bottom="10.0" />
+                                    </opaqueInsets>
+                                </TextField>
+                                <WebView fx:id="emailView" minHeight="320.0" minWidth="-1.0" prefHeight="489.0" prefWidth="703.0">
+                                    <VBox.margin>
+                                        <Insets top="20.0" />
+                                    </VBox.margin>
+                                </WebView>
+                                <HBox prefHeight="64.0" prefWidth="200.0">
+                                    <children>
+                                        <Label fx:id="emailSendInfo" alignment="BASELINE_LEFT" prefHeight="26.0" prefWidth="642.0" text="Label" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>

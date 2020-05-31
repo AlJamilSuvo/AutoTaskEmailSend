@@ -3,6 +3,7 @@ package al.jamil.suvo.autoemail.controller;
 import al.jamil.suvo.autoemail.config.ConfigProvider;
 import al.jamil.suvo.autoemail.emailio.EmailSendListener;
 import al.jamil.suvo.autoemail.emailio.EmailSender;
+import al.jamil.suvo.autoemail.fx.AutoEmailSender;
 import al.jamil.suvo.autoemail.model.Task;
 import al.jamil.suvo.autoemail.traynotification.animations.Animations;
 import al.jamil.suvo.autoemail.traynotification.notification.Notification;
@@ -33,15 +34,17 @@ public class AutoEmailController {
     public TextField toEmail;
     public TextField ccEmail;
     public WebView emailView;
-    public Text emailSendInfo;
+    public Label emailSendInfo;
     public TableView taskTable;
     public TextField tfSubject;
     public Button sendEmailButton;
     public ImageView sendingImage;
-    public Button autoSendCancelBtn;
+    public Text autoSendCancelBtn;
     public Text autoSendTime;
-    public Button cancelEditingBt;
+    public Label cancelEditingBt;
     public Button addTaskBtn;
+    public ImageView ivAddTask;
+    public ImageView ivSendBnt;
     private boolean isInEditMode = false;
     private Task editingTask = null;
 
@@ -52,6 +55,8 @@ public class AutoEmailController {
     Thread timeWatcher;
     boolean shouldTimeWatcherRun = true;
     Calendar sendingTime;
+    Image imgAddTask;
+    Image imgEditTask;
 
     public void setWindow(Window window) {
         this.window = window;
@@ -124,7 +129,9 @@ public class AutoEmailController {
                             tfProject.setText(editingTask.getProject());
                             tfTask.setText(editingTask.getTask());
                             addTaskBtn.setText("Edit Task");
+                            ivAddTask.setImage(imgEditTask);
                             cancelEditingBt.setVisible(true);
+
                             isInEditMode = true;
                         });
 
@@ -208,6 +215,15 @@ public class AutoEmailController {
         }
         generateHTMLPreview();
 
+        File file1 = new File("img/add.png");
+        File file2 = new File("img/edit.png");
+        File file3 = new File("img/send_bnt.png");
+        imgAddTask = new Image("file:///" + file1.getAbsolutePath());
+        imgEditTask = new Image("file:///" + file2.getAbsolutePath());
+        ivSendBnt.setImage(new Image("file:///" + file3.getAbsolutePath()));
+        ivAddTask.setImage(imgAddTask);
+        System.out.println(file1.getAbsolutePath());
+
 
     }
 
@@ -233,7 +249,8 @@ public class AutoEmailController {
             editingTask.setTask(tfTask.getText());
             isInEditMode = false;
             cancelEditingBt.setVisible(false);
-            addTaskBtn.setText("Add Task");
+            addTaskBtn.setText("Add New Task");
+            ivAddTask.setImage(imgAddTask);
             editingTask = null;
         } else {
             Task task = new Task(tfProject.getText(), tfTask.getText(), System.currentTimeMillis());
@@ -244,6 +261,16 @@ public class AutoEmailController {
         }
         tfTask.setText("");
         generateHTMLPreview();
+
+
+        cancelEditingBt.setOnMouseClicked(event -> {
+            cancelEditing(null);
+        });
+        autoSendCancelBtn.setOnMouseClicked(event -> {
+            cancelAutoSent(null);
+        });
+
+
     }
 
     private void generateHTMLPreview() {
@@ -284,7 +311,7 @@ public class AutoEmailController {
         html += ConfigProvider.get().config.getSenderName();
         if (ConfigProvider.get().config.getSenderEmail().equals("jamil.suvo@revesoft.com")) {
             html += "<br><br><br><br>";
-            html += "<p style=\"font-size=8px;\">This email is auto generated and auto sent. This automation is done by " +
+            html += "<p style=\"font-size=8px;color:gray;\">This email is auto generated and auto sent. This automation is done by " +
                     "this project. Github : <a href=\"https://github.com/AlJamilSuvo/AutoTaskEmailSend\">" +
                     "https://github.com/AlJamilSuvo/AutoTaskEmailSend</a></p>";
 
@@ -393,6 +420,7 @@ public class AutoEmailController {
         isInEditMode = false;
         cancelEditingBt.setVisible(false);
         addTaskBtn.setText("Add Task");
+        ivAddTask.setImage(imgAddTask);
         editingTask = null;
         tfTask.setText("");
 
@@ -403,4 +431,6 @@ public class AutoEmailController {
         long timeDiff = sendingTime.getTimeInMillis() - date.getTime();
         return currentlySendingEmail || timeDiff > 0;
     }
+
+
 }

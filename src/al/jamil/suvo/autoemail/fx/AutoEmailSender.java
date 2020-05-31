@@ -26,14 +26,16 @@ import java.net.URL;
 
 public class AutoEmailSender extends Application {
     AutoEmailController controller;
+    boolean isDarkTheme = false;
+    Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Platform.setImplicitExit(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("auto_email_main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("auto_email_main_new.fxml"));
         Parent parent = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        Scene scene = new Scene(parent);
+        scene = new Scene(parent);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Auto Task Email Send");
         File file = new File("img/icon.png");
@@ -50,6 +52,7 @@ public class AutoEmailSender extends Application {
 
 
     }
+
 
 
     private void createSystemTrayIcon(Stage stage) {

@@ -36,11 +36,8 @@
               <TextField fx:id="tfProject" prefHeight="26.0" prefWidth="386.0" GridPane.columnIndex="1" />
               <Label text="Task" GridPane.rowIndex="1" />
               <TextField fx:id="tfTask" prefHeight="26.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-              <Button fx:id="addTaskBtn" mnemonicParsing="false" onAction="#addTask" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #0000FF;" text="Add Task" textFill="WHITE" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Button>
-            <Button fx:id="cancelEditingBt" cancelButton="true" mnemonicParsing="false" onAction="#cancelEditing" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #ff0000;" text="Cancel Editing" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+              <Button fx:id="addTaskBtn" mnemonicParsing="false" onAction="#addTask" prefHeight="26.0" prefWidth="106.0" text="Add Task" GridPane.rowIndex="2" />
+            <Button fx:id="cancelEditingBt" cancelButton="true" mnemonicParsing="false" onAction="#cancelEditing" prefHeight="26.0" prefWidth="110.0" text="Cancel Editing" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="11.0" />
                </font></Button>
@@ -80,7 +77,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Button fx:id="autoSendCancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancelAutoSent" prefHeight="21.0" prefWidth="178.0" style="-fx-background-color: #ff0000;" text="Cancel Auto Send" textFill="WHITE" GridPane.rowIndex="1">
+            <Button fx:id="autoSendCancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancelAutoSent" prefHeight="21.0" prefWidth="178.0" text="Cancel Auto Send" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font size="11.0" />
                </font></Button>
@@ -97,9 +94,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-              <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" style="-fx-background-color: #0000FF;" text="Send Email Now" textFill="WHITE" GridPane.columnIndex="2">
+              <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" prefHeight="37.0" prefWidth="142.0" text="Send Email Now" GridPane.columnIndex="2">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
             <Text fx:id="emailSendInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="Send Email" />
